@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="./src/css/material.min.css">
+    <link rel="stylesheet" href="./src/css/style.css">
+    <link rel="stylesheet" href="./src/css/select.min.css">
+    <link rel="stylesheet" href="./src/css/iconfont/material-icons.css">
+    <script defer src="./src/js/material.min.js"></script>
+    <script defer src="./src/js/select.min.js"></script>
+    <script defer src="./src/js/functions.js"></script>
+    <title>DNS Redes</title>
+</head>
+<body>
+<!-- Always shows a header, even in smaller screens. -->
+
+<div id="home" class="page">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="back mdl-layout-title">gDNS</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- colocar searchbox aqui. -->
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--12-col">
+                        <div id="index">
+                            <img src="./src/img/dns-logo.png" width="150px">
+                            <form id="searchForm">
+                                <input name="url" id="search-box" placeholder="Digite um nome de domínio" type="text"
+                                       required>
+                                <div id="is">
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height">
+                                        <input class="mdl-textfield__input" type="text" id="select" value="A"
+                                               name="type" readonly tabIndex="-1">
+                                        <label for="select">
+                                            <i class="mdl-icon-toggle__label material-icons">keyboard_arrow_down</i>
+                                        </label>
+                                        <ul for="select" class="mdl-menu mdl-menu--bottom-left mdl-js-menu">
+                                            <li class="mdl-menu__item" data-val="ns">NS</li>
+                                            <li class="mdl-menu__item" data-val="a">A</li>
+                                            <li class="mdl-menu__item" data-val="mx">MX</li>
+                                            <li class="mdl-menu__item" data-val="txt">TXT</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <button id="btn" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--raised mdl-button--colored" disabled>
+                                    Buscar
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<div id="result" class="page" style="display: none">
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <!-- Title -->
+                <span class="back mdl-layout-title">gDNS</span>
+                <!-- Add spacer, to align navigation to the right -->
+                <div class="mdl-layout-spacer"></div>
+                <!-- colocar searchbox aqui. -->
+                <i class="back mdl-icon-toggle__label material-icons search-icon">search</i>
+            </div>
+            <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
+                <a id="am" href="#america" class="tabnav mdl-layout__tab is-active">América</a>
+                <a id="eu" href="#europa" class="tabnav mdl-layout__tab">Europa</a>
+                <a id="af" href="#africa" class="tabnav mdl-layout__tab">África</a>
+                <a id="as" href="#asia" class="tabnav mdl-layout__tab">Ásia</a>
+                <a id="oc" href="#oceania" class="tabnav mdl-layout__tab">Oceania</a>
+            </div>
+        </header>
+        <main class="mdl-layout__content">
+            <div id="mapcont">
+                <div id="map"></div>
+                <script src="./src/js/map.js"></script>
+                <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVX8fGU83a5IAZrhaR2P1gnLf2W-L9KTM&callback=initMap"></script>
+            </div>
+            <div id="resultDisplay">
+            <div class="mdl-grid">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <style>
+                        h4{ margin: 0px 0px 0px 0px; }
+                        h6{ margin: 15px 0px 0px 0px; }
+                        #tipo{ text-transform: uppercase; }
+                    </style>
+                    <h4>Resultados da busca:</h4>
+                    <h6>Domínio: <span id="dominio"></span></h6>
+                    <h6>Tipo: <span id="tipo"></span></h6>
+                    <button id="toggleMap" class="mdl-js-ripple-effect mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-button--icon">
+                        <i class="material-icons">map</i>
+                    </button>
+
+                </div>
+            </div>
+            <section class="mdl-layout__tab-panel is-active" id="america">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-full">
+                                <thead id="tham">
+
+                                </thead>
+                                <tbody id="tbam">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="europa">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-full">
+                                <thead id="theu">
+
+                                </thead>
+                                <tbody id="tbeu">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="africa">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-full">
+                                <thead id="thaf">
+
+                                </thead>
+                                <tbody id="tbaf">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="asia">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-full">
+                                <thead id="thas">
+
+                                </thead>
+                                <tbody id="tbas">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="oceania">
+                <div class="page-content">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell mdl-cell--12-col">
+                            <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp table-full">
+                                <thead id="thoc">
+
+                                </thead>
+                                <tbody id="tboc">
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </div>
+        </main>
+    </div>
+</div>
+</body>
+</html>

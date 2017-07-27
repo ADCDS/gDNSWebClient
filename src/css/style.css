@@ -1,0 +1,146 @@
+/*
+ * Style for search box of index page
+ */
+#search-box{
+	padding: 13px;
+	border-radius: 3px;
+	border: 1px solid #ddd;
+	margin-bottom: 10px;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	transition: 0.2s;
+	display: block;
+	width: 36%;
+	min-width: 180px;
+}
+
+/*
+ * Style for search box of index page on focus
+ */
+#search-box:focus{
+	box-shadow: 0px 0px 5px #009fe3;
+	transition: 0.2s;
+}
+
+/*
+ * Style for select of index page
+ */
+#is{
+	position: relative;
+	right: 13.5%;
+}
+
+/*
+ * Style for button of index page
+ */
+#btn{
+	position: relative;
+	left: 11.5%;
+	margin-top: -100px;
+	margin-left: 100px;
+}
+
+/*
+ * Style for conteiner of index page
+ */
+#index{
+	margin: auto;
+  width: 100%;
+	text-align: center;
+}
+
+/*
+ * Style for header title
+ */
+.mdl-layout-title{
+	margin-left: -50px;
+}
+
+/*
+ * Style for header tab bar
+ */
+.mdl-layout__tab-bar{
+	background-color: #fff;
+}
+
+/*
+ * Style for header tab bar links
+ */
+.mdl-layout__tab-bar a{
+	color: #673ab7;
+	
+}
+
+/*
+ * Style for header tab bar item selected
+ */
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active{
+	color: #673ab7;
+	background-color: #fff;
+}
+
+/*
+ * Style for header tab bar item decoration
+ */
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after{
+	color: #fff;
+	background-color: #673ab7;
+	height: 3px;
+}
+
+/*
+ * Style for Google Maps display
+ */
+@media (max-height: 750px) {
+	#mapcont{
+		display: none;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	thead { display: none}
+	tbody { }
+	thead { min-width: 120px }
+	td,th { display: block; height: initial!important;}
+	.small-only {display: block!important;}
+	tr td:first-child {
+		border-top-width: 25px;
+		display: -webkit-flex;
+		display: flex;
+		-webkit-flex-direction: row; /* works with row or column */
+		flex-direction: row;
+		-webkit-align-items: center;
+		align-items: center;
+		-webkit-justify-content: center;
+		justify-content: center;
+	}
+	.server-name{
+		flex: 1;
+		max-width: 212px;
+		word-wrap: break-word;
+	}
+	tr td:last-child {  display: none }
+}
+.small-only{
+	display: none;
+}
+#map{
+  height: 300px;
+  width: 100%;
+}
+
+#toggleMap{
+	display: block;
+	float: right;
+}
+
+/*
+ * Style for table of search results
+ */
+.table-full{
+	width: 100%;
+}
+.search-icon{
+	color: #FFF;
+}
