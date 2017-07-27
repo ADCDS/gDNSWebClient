@@ -363,7 +363,7 @@ function dataSelect(type, res){
 	let retorno = "";
 	let resp = JSON.parse(res);
 	
-	if(type === "A"){
+	if(type === "A" || type === "AAAA"){
 		if(resp.length === 0){
 			retorno = "Não disponivel."
 		}
