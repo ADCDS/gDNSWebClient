@@ -263,6 +263,8 @@ function tableNames(type){
 	}	
 	else if(type === "CNAME"){
         res += '<th class="mdl-data-table__cell--non-numeric">Entrada CNAME</th>';
+	}else{
+	res += '<th class="mdl-data-table__cell--non-numeric">Entrada '+type+'</th>';
 	}
 	res += "<th></th></tr>";
 	return res;
@@ -417,11 +419,7 @@ function ttlConcat(res){
 
 	return retorno;
 }
-// Check if string is a valid type of search
-function typeValidade(t){
-	return t === "A" || t === "NS" || t === "TXT" || t === "MX" || t === "CNAME";
 
-}
 
 let changePage = function(page_str){
 	let pages = document.getElementsByClassName('page');
@@ -456,10 +454,6 @@ let searchFunction = function(e){
     e.preventDefault();
     domain = document.getElementById('search-box').value;
     type = document.getElementById('select').value;
-    if(!typeValidade(type)){
-        document.getElementById('search-box').setCustomValidity('Não é um domínio válido');
-        return;
-    }
 
     document.getElementById('tham').innerHTML = tableNames(type);
     document.getElementById('theu').innerHTML = tableNames(type);
