@@ -428,7 +428,7 @@ function domainValidate(d){
 
 // Check if string is a valid type of search
 function typeValidade(t){
-	return t === "A" || t === "NS" || t === "TXT" || t === "MX";
+	return t === "A" || t === "NS" || t === "TXT" || t === "MX" || t === "CNAME";
 
 }
 
