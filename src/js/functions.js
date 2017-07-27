@@ -258,9 +258,12 @@ function tableNames(type){
 	else if(type === "NS"){
         res += '<th class="mdl-data-table__cell--non-numeric">Servidor Nome</th>';
 	}
-	else{
+	else if(type === "TXT"){
         res += '<th class="mdl-data-table__cell--non-numeric">Entrada TXT</th>';
 	}	
+	else if(type === "CNAME"){
+        res += '<th class="mdl-data-table__cell--non-numeric">Entrada CNAME</th>';
+	}
 	res += "<th></th></tr>";
 	return res;
 }
@@ -414,18 +417,6 @@ function ttlConcat(res){
 
 	return retorno;
 }
-
-// Check if string is a valid domain name
-function domainValidate(d){
-	console.log('b');
-	if (/^(?:(?:(?:[a-zA-z\-]+)\:\/{1,3})?(?:[a-zA-Z0-9])(?:[a-zA-Z0-9-\.]){1,61}[a-zA-Z0-9](?:\.[a-zA-Z]{2,})+|\[(?:(?:(?:[a-fA-F0-9]){1,4})(?::(?:[a-fA-F0-9]){1,4}){7}|::1|::)\]|(?:(?:[0-9]{1,3})(?:\.[0-9]{1,3}){3}))(?:\:[0-9]{1,5})?$/.test(d)){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
-
 // Check if string is a valid type of search
 function typeValidade(t){
 	return t === "A" || t === "NS" || t === "TXT" || t === "MX" || t === "CNAME";
@@ -465,7 +456,7 @@ let searchFunction = function(e){
     e.preventDefault();
     domain = document.getElementById('search-box').value;
     type = document.getElementById('select').value;
-    if(! (domainValidate(domain) && typeValidade(type))){
+    if(!typeValidade(type)){
         document.getElementById('search-box').setCustomValidity('Não é um domínio válido');
         return;
     }
