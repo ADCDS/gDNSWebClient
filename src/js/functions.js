@@ -392,7 +392,8 @@ function dataSelect(type, res){
 		else{
 			retorno += resp[0].data;
 			for(let i=1; i < resp.length; i++){
-				retorno +="<br>" + resp[i].data;
+				if(resp[i].data)
+					retorno +="<br>" + resp[i].data;
 			}
 		}
 	}
