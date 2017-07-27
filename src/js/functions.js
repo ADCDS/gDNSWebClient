@@ -313,7 +313,6 @@ function requestData(domain, type){
                         m.setIcon('./src/img/ok.png');
                     }
 
-					m.setIcon('./src/img/ok.png');
 				}
 				else if (this.status === 500) {
 					//document.getElementById('srttl_' + server.id).innerHTML = "O servidor não respondeu.";
